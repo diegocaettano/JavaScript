@@ -1,12 +1,21 @@
 const url = "http://localhost:8080/api/controladores/gates/4"
 
-function getGate(){
+const tempoGate = 500; // 10 segundos em milisegundos
+const Contador = 0;
+
+function getGate() {
     axios.get(url)
-    .then(response =>{
-        console.log(response)
-    })
-    .catch(erros => console.log(error))
+        .then(response => {
+            const data = response.data
+            renderResults.textContent = JSON.stringify(data.descricao)
+            console.log("atualizando informações do gate")
+            if (data.descricao == "Aguardando caminhão") {
+                renderResults.textContent = "Sem caminhão em cima da balança";
+            } else {
+                renderResults.textContent = JSON.stringify(data.descricao)
+            }
+        })
+        .catch(erros => console.log(error))
 }
 
-
-getGate()
+    setTimeout(getGate(), tempoGate)
