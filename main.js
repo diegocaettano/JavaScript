@@ -1,4 +1,4 @@
-const url = "http://localhost:8080/api/controladores/gates/4"
+const url = "http://localhost:8080/api/controladores/gates/2"
 
 const tempoGate = 500; // 10 segundos em milisegundos
 const Contador = 0;
@@ -14,8 +14,27 @@ function getGate() {
             } else {
                 renderResults.textContent = JSON.stringify(data.descricao)
             }
-        })
-        .catch(erros => console.log(error))
+        }) 
+        .catch(erros => console.log(erros))
 }
 
-    setTimeout(getGate(), tempoGate)
+getGate()
+
+function teste() {
+    const info = info;
+    // var info = prompt("Qual o a situação atual do gate?");
+    switch (info) {
+        case 'Sem caminhão em cima da balança':
+            alert("Situação: Sem caminhão em cima da balança")
+            break
+        case 'Aguardando caminhão':
+            alert("Situação: DEPOSITE SEU CRACHÁ")
+            break
+        case 'BIO':
+            alert("Situação: REALIZE A BIOMETRIA")
+        default: 
+            alert("deu ruim!")
+    }
+}
+
+
